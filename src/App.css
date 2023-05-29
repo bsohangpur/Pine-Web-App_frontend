@@ -1,0 +1,7 @@
+* {
+    scroll-behavior: smooth;
+}
+
+.active {
+    color: #8AB4F8;
+}
