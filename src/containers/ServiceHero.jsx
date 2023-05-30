@@ -44,7 +44,7 @@ const ServiceHero = () => {
                         variants={variants}
                         transition={{ duration: 0.5, delay: 0.5 }}
                     />
-                    <Box mr={4} bg={bg} w={['90%', '60%']} h={'50%'} position={"absolute"} right={{base:'-10px',md:"0"}} top="50%" transform="translateY(-50%)" boxShadow="lg" borderRadius="lg" p={8}>
+                    <Box mr={4} bg={bg} w={['90%', '60%']} h={{md:'50%'}} position={"absolute"} right={{base:'-10px',md:"0"}} top="50%" transform="translateY(-50%)" boxShadow="lg" borderRadius="lg" p={8}>
                         <Text fontSize="xl" fontWeight="bold" mb={4}>We Care About Your Health</Text>
                         <Text mb={4}>We are dedicated to providing you and your family with the highest quality medical care, in a warm and welcoming environment.</Text>
                         <Button size="md" colorScheme="blue">

@@ -10,6 +10,7 @@ import SocialMedia from './SocialMedia';
 import Testimonial from './Testimonial';
 import UsefulInformation from './UsefulInformation';
 import BlogCard from './BlogCard';
+import PrivcyPolicyCard from './PrivcyPolicyCard';
 
 export {
     AppointmentForm,
@@ -24,4 +25,6 @@ export {
     Testimonial,
     UsefulInformation,
     BlogCard,
+    PrivcyPolicyCard,
+    
 }

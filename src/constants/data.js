@@ -3,10 +3,6 @@ import { doctor1, doctor2, doctor3, Mohd_Moizuddin, SARDARUDDIN, SIRAJ_FATIMA, I
 
 export const links = [
     {
-        title: "Home",
-        link: "/"
-    },
-    {
         title: "About Us",
         link: "/aboutus"
     },

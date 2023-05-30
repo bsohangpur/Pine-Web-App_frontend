@@ -7,7 +7,8 @@ import Team from './Team';
 import TeamHero from './TeamHero';
 import BlogHero from './BlogHero';
 import FormHero from './FormHero';
-import Career from './Career'
+import Career from './Career';
+import PrivacyPolicyContainer from './PrivacyPolicyContainer.jsx';
 
 export {
     AboutHero,
@@ -20,4 +21,6 @@ export {
     BlogHero,
     FormHero,
     Career,
+    PrivacyPolicyContainer,
+    
 }

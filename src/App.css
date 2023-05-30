@@ -3,5 +3,5 @@
 }
 
 .active {
-    color: #8AB4F8;
+    border: 2px solid blue;
 }

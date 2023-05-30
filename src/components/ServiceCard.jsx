@@ -60,9 +60,9 @@ const Card = ({ title, description, imageUrl }) => {
                     <Heading textTransform="capitalize" size="md" color={textColor}>
                         {title}
                     </Heading>
-                    <Text mt="2" color={bodytextColor}>
+                    <Box mt="2" color={bodytextColor}>
                         <CropText text={description} />
-                    </Text>
+                    </Box>
                 </Box>
             </Box>
         </motion.div>

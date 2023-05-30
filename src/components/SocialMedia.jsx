@@ -7,7 +7,7 @@ const SocialMedia = () => {
   const toast = useToast();
 
   const textColor = useColorModeValue("#0a192f", "#f5f5f5");
-  const bg = useColorModeValue('gray.100', 'gray.700');
+  const bg = useColorModeValue('gray.200', 'gray.700');
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);

@@ -3,7 +3,7 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import {Image} from '@chakra-ui/image'
 import { motion } from "framer-motion";
 import logo from '../assets/pine_logo-transformed.png'
-import { NavLink } from "react-router-dom";
+import { NavLink, Link as ILink } from "react-router-dom";
 import { links, socialLinks } from '../constants/data'
 
 const Footer = () => {
@@ -21,7 +21,7 @@ const Footer = () => {
         <Flex flexDirection={{ base: "column", md: "row" }} gap={{ md: 12, lg: 24 }} alignItems="center" justify="center">
           <Box mb={4} flexBasis={{ base: "100%", md: "auto" }}>
             <Stack color={textColor} fontSize={"xl"} justify={"center"} spacing={{ base: "2", md: "4" }} direction={{ base: "column", md: "row" }} mb={6} alignItems={"center"}>
-              <NavLink to="/"><Image src={logo} className=' w-12'></Image></NavLink>
+              <ILink to="/"><Image src={logo} className=' w-12'></Image></ILink>
               {
                 links.slice(1).map((value) => {
                   return (

@@ -11,7 +11,6 @@ const Map = () => {
 
   return (
     <Box mx={mx}>
-      <Heading fontSize={textSize}>Reach Us</Heading>
       <Flex mt={6} justifyContent="center" className="h-full w-full">
         <ScaleFade initialScale={0.9} in={true}>
           <Box

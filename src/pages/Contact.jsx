@@ -1,13 +1,13 @@
 import React from 'react';
-import { ContactInfo, SocialMedia } from '../components';
-import { ContactSection, ContactHero } from '../containers';
+import { SocialMedia } from '../components';
+import { ContactSection, ContactHero, PrivacyPolicyContainer } from '../containers';
 
 const Contact = () => {
     return (
         <section className="">
             <ContactHero />
             <ContactSection />
-            <ContactInfo />
+            <PrivacyPolicyContainer/>
             <SocialMedia />
         </section>
     )
