@@ -5,6 +5,7 @@ import {
   Heading,
   Image,
   Text,
+  useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
@@ -12,6 +13,7 @@ import { SanitizedTextView } from "../utils";
 
 const SingleBlog = ({ blog, similarBlogs }) => {
   const { title, image, post } = blog;
+  const textColor = useColorModeValue("gray.600", "gray.200");
 
   return (
     <Flex justify="center" align="center" minHeight="100vh" overflow="hidden">
@@ -22,11 +24,11 @@ const SingleBlog = ({ blog, similarBlogs }) => {
         width="100%"
         p={8}
       >
-        <VStack spacing={8} align="flex-start">
-          <Box>
+        <VStack  spacing={8} align="flex-start">
+          <Box >
             <Heading as="h1">{title}</Heading>
             <Image my={4} src={image} alt={title} />
-            <SanitizedTextView content={post} />
+            <SanitizedTextView textColor={textColor} content={post} />
           </Box>
           <Box w="100%"></Box>
         </VStack>
