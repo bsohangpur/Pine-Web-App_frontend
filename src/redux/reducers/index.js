@@ -3,6 +3,7 @@ import appointmentSlice from './appointmentSlice';
 import careerSlice from './careerSlice';
 import teamSlice from './teamSlice';
 import testimonialSlice from './testimonialSlice';
+import newsletterSlice from './newsletterSlice';
 
 export{
     blogSlice,
@@ -10,5 +11,6 @@ export{
     careerSlice,
     teamSlice,
     testimonialSlice,
+    newsletterSlice,
     
 }

@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import link from "./base_link";
 import axios from "axios";
 
-// const url = `${link}/data/testimonials`;
-const url = "http://127.0.0.1:8000/api/data/testimonials/";
+const url = `${link}/data/testimonials`;
+// const url = "http://127.0.0.1:8000/api/data/testimonials/";
 
 
 export const fetchTestimonial = createAsyncThunk(

@@ -5,6 +5,7 @@ import {
   careerSlice,
   teamSlice,
   testimonialSlice,
+  newsletterSlice,
 } from "./reducers";
 
 const store = configureStore({
@@ -14,6 +15,7 @@ const store = configureStore({
     career: careerSlice,
     team: teamSlice,
     testimonial: testimonialSlice,
+    newsletter: newsletterSlice,
   },
 });
 

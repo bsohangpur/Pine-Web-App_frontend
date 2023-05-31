@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import link from "./base_link";
 import axios from "axios";
 
-// const url = `${link}/form/careers/`;
-const url = "http://127.0.0.1:8000/api/data/careers/";
+const url = `${link}/data/careers/`;
+// const url = "http://127.0.0.1:8000/api/data/careers/";
 
 export const sendCareer = createAsyncThunk(
   "career/post",
