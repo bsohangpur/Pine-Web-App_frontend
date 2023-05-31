@@ -24,7 +24,7 @@ const DoctorCard = ({ doctor, toggle }) => {
                 <Image h={450} src={doctor.image} alt={doctor.name} />
                 <Box p="6">
                     <Heading textTransform="capitalize" as="h3" size="md">
-                        {doctor.name}
+                        {doctor.title}
                     </Heading>
                     <Text mt="4" fontSize="sm">
                         {toggle && 'Specialty:'} {doctor.role}
