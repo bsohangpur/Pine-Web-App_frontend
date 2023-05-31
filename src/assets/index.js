@@ -7,7 +7,7 @@ import doctor2 from './doctor2.jpg';
 import doctor3 from './doctor3.jpg';
 import hero_img from './hero_img.webp';
 import Pharmacy from './Pharmacy.jpg';
-import logo from './pine_logo-transformed.png';
+import logo from './pine_logo.png';
 import service_hero_img from './service_hero_img.jpg';
 import Mohd_Moizuddin from './Mohd_Moizuddin.jpeg';
 import team_hero_img from './team_hero_img.jpg'

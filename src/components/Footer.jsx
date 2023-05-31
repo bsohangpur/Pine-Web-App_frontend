@@ -2,7 +2,7 @@ import { Flex, Box, Stack, Text, Link, Input, Button, IconButton, Icon, Heading,
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import {Image} from '@chakra-ui/image'
 import { motion } from "framer-motion";
-import logo from '../assets/pine_logo-transformed.png'
+import {logo} from "../assets";
 import { NavLink, Link as ILink } from "react-router-dom";
 import { links, socialLinks } from '../constants/data'
 

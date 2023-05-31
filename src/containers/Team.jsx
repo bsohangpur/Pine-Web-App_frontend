@@ -27,10 +27,10 @@ const DoctorCard = ({ doctor, toggle }) => {
                         {doctor.name}
                     </Heading>
                     <Text mt="4" fontSize="sm">
-                        {toggle && 'Specialty:'} {doctor.specialty}
+                        {toggle && 'Specialty:'} {doctor.role}
                     </Text>
                     <Box mt="2" fontSize="sm">
-                        <CropText text={doctor.bio} />
+                        <CropText text={doctor.detail} />
                     </Box>
                 </Box>
             </Box>

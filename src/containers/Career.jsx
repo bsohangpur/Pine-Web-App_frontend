@@ -17,19 +17,22 @@ import {
 import { FaArrowRight } from "react-icons/fa";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { sendCareer } from "../redux/reducers/careerSlice";
 
 const Career = () => {
   const toast = useToast();
+  const dispatch = useDispatch();
 
   const handleFileUpload = (setFieldValue) => (event) => {
     const file = event.currentTarget.files[0];
     if (!file) {
       return;
     }
-    if (file.size > 5242880) {
+    if (file.size > 1048576) {
       toast({
         title: "File too large",
-        description: "The file size exceeds the limit of 5MB.",
+        description: "The file size exceeds the limit of 1MB.",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -72,14 +75,22 @@ const Career = () => {
             .required("Resume is required")
             .test(
               "fileSize",
-              "File size too large (maximum 5MB)",
-              (value) => value && value.size <= 5242880
+              "File size too large (maximum 1MB)",
+              (value) => value && value.size <= 1048576
             ),
         })}
         onSubmit={(values, actions) => {
           setTimeout(() => {
             actions.setSubmitting(false);
-            console.log(values);
+            const formData = new FormData();
+            formData.append("name", values.name);
+            formData.append("phone", values.phone);
+            formData.append("email", values.email);
+            formData.append("message", values.message);
+            formData.append("resume", values.resume);
+
+            dispatch(sendCareer(formData));
+
             toast({
               title: "Form submitted",
               description: "Your application has been submitted successfully.",
@@ -173,7 +184,7 @@ const Career = () => {
                       alignItems="center"
                       justifyContent="center"
                       h={14}
-                      w='100%'
+                      w="100%"
                       className="hover:bg-slate-300"
                     >
                       <Text fontSize="md" fontWeight="medium" color="gray.600">

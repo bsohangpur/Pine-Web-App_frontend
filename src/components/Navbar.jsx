@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { FaMoon, FaSun, FaBars } from "react-icons/fa";
 import { Image } from "@chakra-ui/image";
-import logo from "../assets/pine_logo-transformed.png";
+import {logo} from "../assets";
 import { NavLink, Link } from "react-router-dom";
 import { links } from "../constants/data";
 
