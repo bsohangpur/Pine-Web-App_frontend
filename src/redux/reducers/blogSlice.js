@@ -12,7 +12,6 @@ export const fetchBlogs = createAsyncThunk("blog/get", async (thunkAPI) => {
 export const singleBlog = createAsyncThunk(
   "blog/get_by_slug",
   async (slug, thunkAPI) => {
-    console.log(slug)
     const res = await axios.get(`${url}/${slug}`);
     return res.data;
   }

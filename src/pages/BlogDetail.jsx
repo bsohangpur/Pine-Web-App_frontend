@@ -4,7 +4,7 @@ import { SingleBlog } from "../containers";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { singleBlog } from "../redux/reducers/blogSlice";
-import Loading from "../constants/Loading";
+import { Loading, Error } from "../constants";
 
 const BlogDetail = () => {
   const { blog, isLoading, error } = useSelector((state) => state.blog);
@@ -18,7 +18,7 @@ const BlogDetail = () => {
   if (isLoading) {
     return <Loading />;
   } else if (error) {
-    return <div>error ...</div>;
+    return <Error route="Blog" path="/blog" message={error} />;
   }
 
   return (

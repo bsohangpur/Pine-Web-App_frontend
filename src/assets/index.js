@@ -9,13 +9,9 @@ import hero_img from './hero_img.webp';
 import Pharmacy from './Pharmacy.jpg';
 import logo from './pine_logo.png';
 import service_hero_img from './service_hero_img.jpg';
-import Mohd_Moizuddin from './Mohd_Moizuddin.jpeg';
 import team_hero_img from './team_hero_img.jpg'
 import blog_hero_img from './blog_hero_img.jpg'
-import SIRAJ_FATIMA from './SIRAJ_FATIMA.jpg';
-import SARDARUDDIN from './SARDARUDDIN.jpg';
-import Irfan from './Irfan.jpeg';
-import Burhan from './Burhanuddin.png'
+import join_us from './join_us.png';
 
 export {
     about_hero_img,
@@ -31,9 +27,5 @@ export {
     service_hero_img,
     team_hero_img,
     blog_hero_img,
-    Mohd_Moizuddin,
-    SIRAJ_FATIMA,
-    SARDARUDDIN,
-    Irfan,
-    Burhan
+    join_us
 }

@@ -51,6 +51,7 @@ const Footer = () => {
               spacing={{ base: "2", md: "4" }}
               direction={{ base: "column", md: "row" }}
               mb={6}
+              wrap='wrap'
               alignItems={"center"}
             >
               <ILink to="/">
@@ -112,6 +113,7 @@ const Footer = () => {
             _hover={{ color: "gray.600" }}
             spacing={4}
             direction="row"
+            wrap='wrap'
             alignItems="center"
           >
             {socialLinks.map((value) => {

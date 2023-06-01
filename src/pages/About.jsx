@@ -3,7 +3,7 @@ import React from "react";
 import { Testimonial, Equipment } from "../components";
 import { AboutHero, Team } from "../containers";
 import { useSelector } from "react-redux";
-import Loading from "../constants/Loading";
+import { Loading, Error as Errors } from "../constants";
 // import { doctorData } from '../constants/data'
 
 const About = () => {
@@ -19,7 +19,7 @@ const About = () => {
   if (isLoading && isloading) {
     return <Loading />;
   } else if (error && Error) {
-    return <div>error ...</div>;
+    return <Errors route="Home" path="/" message={error || Error} />;
   }
 
   return (

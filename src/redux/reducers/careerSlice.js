@@ -3,13 +3,13 @@ import link from "./base_link";
 import axios from "axios";
 
 const url = `${link}/data/careers/`;
-// const url = "http://127.0.0.1:8000/api/data/careers/";
+
 
 export const sendCareer = createAsyncThunk(
   "career/post",
   async (data, thunkAPI) => {
     const response = await axios.post(url, data);
-    return response.status;
+    return response;
   }
 );
 
@@ -25,11 +25,13 @@ const careerSlice = createSlice({
     builder.addCase(sendCareer.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(sendCareer.fulfilled, (state, actions) => {
-      state.status = actions.payload;
+    builder.addCase(sendCareer.fulfilled, (state, action) => {
+      state.status = action.payload;
+      state.isLoading = false;
     });
-    builder.addCase(sendCareer.rejected, (state, actions) => {
-      state.error = actions.error.message;
+    builder.addCase(sendCareer.rejected, (state, action) => {
+      state.error = action.error.message;
+      state.isLoading = false;
     });
   },
 });

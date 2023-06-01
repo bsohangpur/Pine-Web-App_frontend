@@ -6,6 +6,7 @@ import {
   teamSlice,
   testimonialSlice,
   newsletterSlice,
+  authSlice,
 } from "./reducers";
 
 const store = configureStore({
@@ -16,6 +17,7 @@ const store = configureStore({
     team: teamSlice,
     testimonial: testimonialSlice,
     newsletter: newsletterSlice,
+    auth: authSlice,
   },
 });
 

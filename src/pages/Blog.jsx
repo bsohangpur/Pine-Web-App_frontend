@@ -3,7 +3,7 @@ import { BlogCard, SocialMedia } from "../components";
 import { BlogHero } from "../containers";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogs } from "../redux/reducers/blogSlice";
-import Loading from "../constants/Loading";
+import { Loading, Error } from "../constants";
 
 const Blog = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Blog = () => {
   if (isLoading) {
     return <Loading />;
   } else if (error) {
-    return <div>error ...</div>;
+    return <Error route='Home' path='/' message={error}/>;
   }
 
   return (

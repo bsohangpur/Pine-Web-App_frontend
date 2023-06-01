@@ -16,6 +16,9 @@ import { Career } from "./containers";
 import { useDispatch } from "react-redux";
 import { fetchTeam } from "./redux/reducers/teamSlice";
 import { fetchTestimonial } from "./redux/reducers/testimonialSlice";
+import Dashboard from "./admin/Dashboard";
+import Login from "./auth/Login";
+import Auth from "./auth/Auth";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -52,6 +55,12 @@ const App = () => {
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/appointment-form" element={<AppointmentForm />} />
           <Route path="/career" element={<Career />} />
+          <Route path="/auth">
+            <Route path="login" element={<Login />} />
+            <Route path="dashboard" element={<Auth />}>
+              <Route path="" element={<Dashboard />} />
+            </Route>
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>

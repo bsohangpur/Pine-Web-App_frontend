@@ -1,13 +1,11 @@
 import React from "react";
 import { SocialMedia } from "../components";
 import { Team, TeamHero } from "../containers";
-import Loading from "../constants/Loading";
+import { Loading, Error } from "../constants";
 import { useSelector } from "react-redux";
 
 const OurTeam = () => {
   const { team, isLoading, error } = useSelector((state) => state.team);
-
-  console.log(team);
 
   const managementData = team.filter((val) => val.position === "management");
   const teamData = team.filter((val) => val.position === "team");
@@ -16,7 +14,7 @@ const OurTeam = () => {
   if (isLoading) {
     return <Loading />;
   } else if (error) {
-    return <div>error ...</div>;
+    return <Error route="Home" path="/" message={error} />;
   }
 
   return (

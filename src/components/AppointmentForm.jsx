@@ -13,8 +13,9 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sendAppointment } from "../redux/reducers/appointmentSlice";
+import { Error } from "../constants";
 
 const procedures = {
   pharmacy: ["Prescription Refill", "Medication Consultation"],
@@ -63,6 +64,7 @@ const MedicalCenterSchema = Yup.object().shape({
 const DoctorAppointmentForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState("");
+  const { error } = useSelector((state) => state.appointment);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
@@ -91,6 +93,10 @@ const DoctorAppointmentForm = () => {
   const handleDepartmentChange = (event) => {
     setSelectedDepartment(event.target.value);
   };
+
+  if (error) {
+    return <Error route='Refresh' path='/appointment-form' message={error}/>;
+  }
 
   return (
     <Box maxW={{ base: "sm", md: "md", lg: "lg" }} mx="auto" my="10">

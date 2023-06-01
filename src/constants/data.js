@@ -1,5 +1,5 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { doctor1, doctor2, doctor3, Mohd_Moizuddin, SARDARUDDIN, SIRAJ_FATIMA, Irfan, Burhan } from '../assets';
+
 
 export const links = [
     {
@@ -55,55 +55,6 @@ export const socialLinks = [
         link: "mailto:info@pinemedical.in"
     }
 ]
-
-export const doctorData = [
-    {
-        name: "Mr. L. Narayan Tiwari",
-        specialty: "Executive",
-        bio: "",
-        image: "",
-    },
-    {
-        name: "Mr. M. A. Irfan",
-        specialty: "Manager & HR",
-        bio: "",
-        image: Irfan,
-    },
-    {
-        name: "Mr. Burhanuddin A. S.",
-        specialty: "Developer",
-        bio: "",
-        image: Burhan,
-    },
-    
-];
-
-export const managementData = [
-    {
-        name: "Mr. Sardaruddin",
-        specialty: "Founder & MD",
-        bio: "Mr. Md Sardaruddin is a founder and MD of Pine Medical Centre LLP with deeper knowledge in a specific area he knows how to utilizes their expertise for the guidance and benefit of others. He brings their vital experience and knowledge to contribute to their clients' short- and long-term success.",
-        image: SARDARUDDIN,
-    },
-    {
-        name: "Ms. Siraj Fatima",
-        specialty: "Co Founder",
-        bio: "Ms. Siraj Fatima is Co Founder of the Pine Medical Centre LLP. She is creating good environment for our staff and as well as our patients. She always around patients and make them want to be a better facility, who make you feel good, make you comfort in Medical Centre, and remind you what's important in life.",
-        image: SIRAJ_FATIMA,
-    },
-    {
-        name: "Mr. Mohd Moizuddin",
-        specialty: "Director",
-        bio: "Mr. Mohd Moizuddin is a Director of Pine Medical Centre LLp, who starts a Medical Centre to help the patients our city. He uses their greats skills and knowledge to build a business from nothing. He is probably the founder who comes most readily to mind with great efforts.",
-        image: Mohd_Moizuddin,
-    },
-    {
-        name: "Mr. Mohd Moinuddin",
-        specialty: "Adviser",
-        bio: "Mr. Mohd Moinuddin is Adviser of the Pine Medical Centre LLP. He is a person with a new idea is a crank until the idea succeeds. An idea is just an idea. When and how to execute that idea, He knows very well.",
-        image: "",
-    },
-];
 
 
 export const faq = [
