@@ -19,6 +19,7 @@ import { fetchTestimonial } from "./redux/reducers/testimonialSlice";
 import Dashboard from "./admin/Dashboard";
 import Login from "./auth/Login";
 import Auth from "./auth/Auth";
+import { Error } from "./constants";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -46,21 +47,22 @@ const App = () => {
         </div>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/aboutus" element={<About />} />
-          <Route path="/service" element={<Service />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/team" element={<OurTeam />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogDetail />} />
-          <Route path="/appointment-form" element={<AppointmentForm />} />
-          <Route path="/career" element={<Career />} />
-          <Route path="/auth">
+          <Route exect path="/" element={<Home />} />
+          <Route exect path="/aboutus" element={<About />} />
+          <Route exect path="/service" element={<Service />} />
+          <Route exect path="/contact" element={<Contact />} />
+          <Route exect path="/team" element={<OurTeam />} />
+          <Route exect path="/blog" element={<Blog />} />
+          <Route exect path="/blog/:slug" element={<BlogDetail />} />
+          <Route exect path="/appointment-form" element={<AppointmentForm />} />
+          <Route exect path="/career" element={<Career />} />
+          <Route exect path="*" element={<Error path='/' route='Home' message='page not found with status code 404' />} />
+          {/* <Route path="/auth">
             <Route path="login" element={<Login />} />
             <Route path="dashboard" element={<Auth />}>
               <Route path="" element={<Dashboard />} />
             </Route>
-          </Route>
+          </Route> */}
         </Routes>
         <Footer />
       </BrowserRouter>
