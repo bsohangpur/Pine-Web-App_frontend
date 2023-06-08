@@ -16,9 +16,6 @@ import { Career } from "./containers";
 import { useDispatch } from "react-redux";
 import { fetchTeam } from "./redux/reducers/teamSlice";
 import { fetchTestimonial } from "./redux/reducers/testimonialSlice";
-import Dashboard from "./admin/Dashboard";
-import Login from "./auth/Login";
-import Auth from "./auth/Auth";
 import { Error } from "./constants";
 
 const ScrollToTop = () => {
@@ -56,13 +53,17 @@ const App = () => {
           <Route exect path="/blog/:slug" element={<BlogDetail />} />
           <Route exect path="/appointment-form" element={<AppointmentForm />} />
           <Route exect path="/career" element={<Career />} />
-          <Route exect path="*" element={<Error path='/' route='Home' message='page not found with status code 404' />} />
-          {/* <Route path="/auth">
-            <Route path="login" element={<Login />} />
-            <Route path="dashboard" element={<Auth />}>
-              <Route path="" element={<Dashboard />} />
-            </Route>
-          </Route> */}
+          <Route
+            exect
+            path="*"
+            element={
+              <Error
+                path="/"
+                route="Home"
+                message="page not found with status code 404"
+              />
+            }
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

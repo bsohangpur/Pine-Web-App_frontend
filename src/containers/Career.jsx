@@ -22,11 +22,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendCareer } from "../redux/reducers/careerSlice";
 import { Error } from "../constants";
 import { join_us } from "../assets";
+import { useNavigate } from "react-router-dom";
 
 const Career = () => {
   const toast = useToast();
   const dispatch = useDispatch();
   const { error, status } = useSelector((state) => state.appointment);
+  const navigation = useNavigate();
+
+  const initialValues = {
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+    resume: null,
+  };
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    phone: Yup.string()
+      .matches(/^\d{10}$/, "Invalid phone number")
+      .required("Phone number is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    message: Yup.string().required("Message is required"),
+    resume: Yup.mixed()
+      .required("Resume is required")
+      .test(
+        "fileSize",
+        "File size too large (maximum 1MB)",
+        (value) => value && value.size <= 1048576
+      ),
+  });
 
   const handleFileUpload = (setFieldValue) => (event) => {
     const file = event.currentTarget.files[0];
@@ -44,6 +72,42 @@ const Career = () => {
       return;
     }
     setFieldValue("resume", file);
+  };
+
+  const handleSubmit = async (values, actions) => {
+    try {
+      // Send hiring request here
+      actions.setSubmitting(false);
+      const formData = new FormData();
+      formData.append("name", values.name);
+      formData.append("phone", values.phone);
+      formData.append("email", values.email);
+      formData.append("message", values.message);
+      formData.append("resume", values.resume);
+
+      dispatch(sendCareer(formData));
+
+      toast({
+        title: "Form submitted",
+        description: "Your application has been submitted successfully.",
+        status: "success",
+        duration: 7000,
+        isClosable: true,
+      });
+
+      setTimeout(() => {
+        navigation('/');
+      }, 2000);
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Failed to send hiring request.",
+        description: error.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   if (error) {
@@ -64,52 +128,9 @@ const Career = () => {
           </Text>
         </Box>
         <Formik
-          initialValues={{
-            name: "",
-            phone: "",
-            email: "",
-            message: "",
-            resume: null,
-          }}
-          validationSchema={Yup.object().shape({
-            name: Yup.string().required("Name is required"),
-            phone: Yup.string()
-              .matches(/^\d{10}$/, "Invalid phone number")
-              .required("Phone number is required"),
-            email: Yup.string()
-              .email("Invalid email address")
-              .required("Email is required"),
-            message: Yup.string().required("Message is required"),
-            resume: Yup.mixed()
-              .required("Resume is required")
-              .test(
-                "fileSize",
-                "File size too large (maximum 1MB)",
-                (value) => value && value.size <= 1048576
-              ),
-          })}
-          onSubmit={(values, actions) => {
-            setTimeout(() => {
-              actions.setSubmitting(false);
-              const formData = new FormData();
-              formData.append("name", values.name);
-              formData.append("phone", values.phone);
-              formData.append("email", values.email);
-              formData.append("message", values.message);
-              formData.append("resume", values.resume);
-
-              dispatch(sendCareer(formData));
-
-              toast({
-                title: "Form submitted",
-                description:
-                  "Your application has been submitted successfully.",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-              });
-            }, 1000);
-          }}
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
         >
           {({ isSubmitting, setFieldValue }) => (
             <Form>
@@ -239,7 +260,7 @@ const Career = () => {
         </Formik>
       </Box>
       <Box className="hidden lg:block">
-        <Image src={join_us} alt="career"/>
+        <Image src={join_us} alt="career" />
       </Box>
     </Box>
   );

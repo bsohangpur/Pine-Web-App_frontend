@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <section className=" ">
       <Hero />
-      <AboutHero />
+      <AboutHero home={true} />
       <ServiceCard />
       <ContactSection />
     </section>
