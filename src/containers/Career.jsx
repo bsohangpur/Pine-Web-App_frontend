@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Heading,
@@ -10,10 +10,12 @@ import {
   FormControl,
   FormLabel,
   Input,
+  InputGroup,
   Textarea,
   FormErrorMessage,
   useToast,
   Image,
+  InputRightAddon,
 } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa";
 import { Formik, Form, Field } from "formik";
@@ -23,12 +25,28 @@ import { sendCareer } from "../redux/reducers/careerSlice";
 import { Error } from "../constants";
 import { join_us } from "../assets";
 import { useNavigate } from "react-router-dom";
+import { country_tel_code } from "../data";
+import Select from "react-select";
 
 const Career = () => {
   const toast = useToast();
   const dispatch = useDispatch();
-  const { error, status } = useSelector((state) => state.appointment);
+  const { error } = useSelector((state) => state.appointment);
   const navigation = useNavigate();
+  const [countryCode, setCountryCode] = useState("+91");
+  const [countryFlag, setCountryFlag] = useState(
+    "iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAYAAACaq43EAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowMEUwNDkwQzE3N0QxMUUyODY3Q0FBOTFCQzlGNjlDRiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowMEUwNDkwRDE3N0QxMUUyODY3Q0FBOTFCQzlGNjlDRiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjAwRTA0OTBBMTc3RDExRTI4NjdDQUE5MUJDOUY2OUNGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjAwRTA0OTBCMTc3RDExRTI4NjdDQUE5MUJDOUY2OUNGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+OIHw6AAAAPlJREFUeNpi/D/T+D/DAAAmhgECoxYPf4sZ/wPBQFn8CUjzEqvh7cffDAtX32Xg4WZhYGJkZHj/8SdDTLAKg6QIGyn2fiY5qGdN38/A8OU5g5k2F4OxBicD59+3DHNm7CXZxyykKL548TGDmCgHg6mpMoObWz/Dr19/GHbvLmS4desZWE5fX5Y2Fv/794+BhYWR4e/ff0BLfwPxX4Y/f0BiTAz///+jbRy3te5gEBTgYrCyVgY65D/DuXOPGJ49/cBQW+9FUhyTbPGnt78Z9qx7wiAozMnAyMTI8OblVwYnfxkGIQk2ki0emOwk3MExWjuNWjy8LAYIMADBumJ9k9IhVwAAAABJRU5ErkJggg=="
+  );
+
+  const handleCountryCodeChange = (selectedOption) => {
+    setCountryCode(selectedOption.value.dial_code);
+    setCountryFlag(selectedOption.value.flag);
+  };
+
+  const options = country_tel_code.map((country, index) => ({
+    value: country,
+    label: country.dial_code,
+  }));
 
   const initialValues = {
     name: "",
@@ -41,7 +59,7 @@ const Career = () => {
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     phone: Yup.string()
-      .matches(/^\d{10}$/, "Invalid phone number")
+      .matches(/^[1-9]\d{9}$/, "Invalid phone number")
       .required("Phone number is required"),
     email: Yup.string()
       .email("Invalid email address")
@@ -80,7 +98,7 @@ const Career = () => {
       actions.setSubmitting(false);
       const formData = new FormData();
       formData.append("name", values.name);
-      formData.append("phone", values.phone);
+      formData.append("phone", countryCode + values.phone);
       formData.append("email", values.email);
       formData.append("message", values.message);
       formData.append("resume", values.resume);
@@ -96,7 +114,7 @@ const Career = () => {
       });
 
       setTimeout(() => {
-        navigation('/');
+        navigation("/");
       }, 2000);
     } catch (error) {
       console.error(error);
@@ -154,11 +172,31 @@ const Career = () => {
                     isInvalid={form.errors.phone && form.touched.phone}
                   >
                     <FormLabel>Phone Number</FormLabel>
-                    <Input
-                      {...field}
-                      type="phone"
-                      placeholder="Your phone number"
-                    />
+                    <InputGroup>
+                      <Select
+                        value={{ value: countryCode, label: countryCode }}
+                        onChange={handleCountryCodeChange}
+                        options={options}
+                        className="appointment_phone_select w-48"
+                        menuPlacement="top"
+                      />
+
+                      <Input
+                        {...field}
+                        type="tel"
+                        id="phone"
+                        placeholder="Phone number"
+                        className="career_phone_input"
+                      />
+                      <InputRightAddon
+                        children={
+                          <Image
+                            src={`data:image/png;base64,${countryFlag}`}
+                            alt="Icon"
+                          />
+                        }
+                      />
+                    </InputGroup>
                     <FormErrorMessage>{form.errors.phone}</FormErrorMessage>
                   </FormControl>
                 )}

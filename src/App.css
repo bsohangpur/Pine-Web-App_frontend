@@ -5,3 +5,21 @@
 .active {
   border: 1px solid blue;
 }
+
+
+.appointment_phone_input, .career_phone_input{
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.appointment_phone_select, .career_phone_select{
+  border-radius: 5px 0px 0px 5px !important;
+
+}
+
+/* .appointment_phone_select .css-1nmdiq5-menu {
+  background-color: antiquewhite;
+  z-index: 9999 !important;
+  width: 50vw;
+  position: absolute; /* or position: fixed; 
+} 
+*/
